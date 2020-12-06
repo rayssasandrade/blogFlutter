@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart' as dio;
 import 'package:codeBlogFlutter/post.dart';
 import 'package:codeBlogFlutter/HttpService.dart';
+import 'package:codeBlogFlutter/postDetalhes.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,13 +47,13 @@ class PostsPage extends StatelessWidget {
                     (Post post) => ListTile(
                       title: Text(post.titulo),
                       subtitle: Text(post.autor),
-                      /*onTap: () => Navigator.of(context).push(
+                      onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => PostDetail(
+                          builder: (context) => PostDetalhes(
                             post: post,
                           ),
                         ),
-                      ),*/
+                      ),
                     ),
                   )
                   .toList(),
@@ -64,4 +65,5 @@ class PostsPage extends StatelessWidget {
       ),
     );
   }
+
 }

@@ -8,10 +8,12 @@ import 'package:dio/dio.dart' as dio;
 import 'package:codeBlogFlutter/post.dart';
 
 class HttpService {
+
+  final String url = 'http://10.0.0.9:9090/';
   
   Future<List<Post>> getPosts() async {
     final response =
-      await http.get('http://10.0.0.9:9090/posts/');
+      await http.get(this.url+'posts');
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);
@@ -27,4 +29,17 @@ class HttpService {
       throw "Can't get posts.";
     }
   }
+  /* 
+  Future<void> deletePost(int id) async {
+  final response =
+      await http.delete(this.url+'$id');
+
+    if (response.statusCode == 200) {
+      print("Deletado");
+    } else {
+      throw "Can't delete post.";
+    }
+  }
+  */
+
 }
