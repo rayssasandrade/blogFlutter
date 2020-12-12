@@ -8,6 +8,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:codeBlogFlutter/post.dart';
 import 'package:codeBlogFlutter/HttpService.dart';
 import 'package:codeBlogFlutter/postDetalhes.dart';
+import 'package:codeBlogFlutter/novoPost.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,13 +29,15 @@ class MyApp extends StatelessWidget {
 }
 
 class PostsPage extends StatelessWidget {
+
   final HttpService httpService = HttpService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Posts"),
+        title: new Center(child: new Text("Posts")
+        ),
       ),
       body: FutureBuilder(
         future: httpService.getPosts(),
@@ -63,7 +66,17 @@ class PostsPage extends StatelessWidget {
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => NovoPost(),
+          ),
+        )
+        .then((_) {
+          
+        }),
+        child: Icon(Icons.add),
+      ),
     );
   }
-
 }
