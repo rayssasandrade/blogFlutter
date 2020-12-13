@@ -9,18 +9,19 @@ import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:codeBlogFlutter/post.dart';
 import 'package:codeBlogFlutter/HttpService.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NovoPost extends StatefulWidget {
  
   NovoPost({Key key}) : super(key: key);
 
   @override
-  _NovoPosteState createState(){
-    return _NovoPosteState();
+  _NovoPostState createState(){
+    return _NovoPostState();
   }
 }
 
-class _NovoPosteState extends State<NovoPost> {
+class _NovoPostState extends State<NovoPost> {
 
   HttpService httpService = new  HttpService();
 

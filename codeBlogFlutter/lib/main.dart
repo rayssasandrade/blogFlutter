@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 
+import 'package:codeBlogFlutter/autentication.dart';
+import 'package:codeBlogFlutter/login.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart' as dio;
@@ -69,11 +71,13 @@ class PostsPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => NovoPost(),
+            builder: (context) => Autentication(),
           ),
         )
         .then((_) {
-          
+          setState(){
+            httpService.getPosts();
+          };
         }),
         child: Icon(Icons.add),
       ),
