@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 
+import 'package:codeBlogFlutter/app.dart';
+import 'package:codeBlogFlutter/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:dio/dio.dart' as dio;
-import 'package:codeBlogFlutter/post.dart';
-import 'package:codeBlogFlutter/HttpService.dart';
-import 'package:codeBlogFlutter/postDetalhes.dart';
-import 'package:codeBlogFlutter/novoPost.dart';
+import 'package:codeBlogFlutter/service/HttpService.dart';
+import 'package:codeBlogFlutter/form/novoUsuario.dart';
 
 import 'alert.dart';
 
@@ -24,7 +22,9 @@ class Login extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: new Center(
+            child: new Text('Login'),
+        ),
       ),
       body: _body (context),
     );
@@ -55,6 +55,14 @@ class Login extends StatelessWidget{
                   _clickButton(context);
                 },
               ),
+              ElevatedButton(
+                child: Text('Cadastro'),
+                onPressed: () {
+                  Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => NovoUsuario()),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -64,7 +72,7 @@ class Login extends StatelessWidget{
   _textFormField(
     String label,
     String hint, {
-      bool senha = false,
+      bool senha = true,
       TextEditingController controller,
       FormFieldValidator<String> validator,
     }
@@ -115,10 +123,10 @@ class Login extends StatelessWidget{
 
   }
 
-   _navegaHomePage(BuildContext context){
+  _navegaHomePage(BuildContext context){
       Navigator.push(
-        context, MaterialPageRoute(builder: (context) => NovoPost()),
+        context, MaterialPageRoute(builder: (context) => App()),
       );
-   }
+  }
 
 }
